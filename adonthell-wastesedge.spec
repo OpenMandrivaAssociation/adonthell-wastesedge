@@ -2,7 +2,7 @@
 %define	rname	wastesedge
 %define	name	%{mname}-%{rname}
 %define version	0.3.4
-%define release	%mkrel 1
+%define release	%mkrel 2
 %define	Summary	Official game package for Adonthell
 
 Name:		%{name}
