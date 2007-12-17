@@ -19,7 +19,6 @@ BuildArch:	noarch
 Requires:	%{mname} >= %{version}
 BuildRequires:	%{mname} >= %{version}
 Summary:	%{Summary}
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 As a loyal servant of the elven Lady Silverhair, you arrive at the remote
