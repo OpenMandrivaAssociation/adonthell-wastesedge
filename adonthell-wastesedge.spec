@@ -43,14 +43,15 @@ rm -rf $RPM_BUILD_ROOT
 %{makeinstall_std} datadir=%{_datadir}
 #ROOT%{_gamesbindir} gamedatadir=$RPM_BUILD_ROOT%{_gamesdatadir}/%{mname}/games/%{rname}
 
-install -d $RPM_BUILD_ROOT%{_menudir}
-cat <<EOF >$RPM_BUILD_ROOT%{_menudir}/%{name}
-?package(%{name}):command="%{_gamesbindir}/%{name}" \
-		  icon=%{name}.png \
-		  needs="x11" \
-		  section="More Applications/Games/Adventure" \
-		  title="Adonthell - Waste's Edge"\
-		  longtitle="%{Summary}"
+mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications/
+cat << EOF > %buildroot%{_datadir}/applications/mandriva-%{name}.desktop
+[Desktop Entry]
+Type=Application
+Exec=%{_gamesbindir}/%{name}
+Icon=%{name}
+Categories=Game;AdventureGame;
+Name=Adonthell - Waste's Edge
+Comment=%{Summary}
 EOF
 
 install -m644 %{SOURCE11} -D ${RPM_BUILD_ROOT}%{_miconsdir}/%{name}.png
@@ -75,7 +76,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_gamesdatadir}/%{mname}/games/%{rname}
 %{_gamesdatadir}/%{mname}/games/%{rname}/*
 %{_datadir}/pixmaps/*
-%{_menudir}/%{name}
+%{_datadir}/applications/mandriva-%{name}.desktop
 %{_iconsdir}/%{name}.png
 %{_liconsdir}/%{name}*.png
 %{_miconsdir}/%{name}*.png
