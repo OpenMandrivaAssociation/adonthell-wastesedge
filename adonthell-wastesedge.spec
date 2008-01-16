@@ -1,14 +1,12 @@
 %define	mname	adonthell
 %define	rname	wastesedge
 %define	name	%{mname}-%{rname}
-%define version	0.3.4
-%define release	%mkrel 2
-%define	Summary	Official game package for Adonthell
 
 Name:		%{name}
-Version:	%{version}
-Release:	%{release}
-License:	GPL
+Summary:	Open source role-playing game (RPG)
+Version:	0.3.4
+Release:	%mkrel 2
+License:	GPL+
 Group:		Games/Adventure
 Source0:	http://freesoftware.fsf.org/download/adonthell/%{rname}-src-%{version}.tar.bz2
 Source11:	%{name}-16x16.png
@@ -18,7 +16,6 @@ URL:		http://adonthell.linuxgames.com/
 BuildArch:	noarch
 Requires:	%{mname} >= %{version}
 BuildRequires:	%{mname} >= %{version}
-Summary:	%{Summary}
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
@@ -26,7 +23,7 @@ As a loyal servant of the elven Lady Silverhair, you arrive at the remote
 trading post of Waste's Edge, where she is engaged in negotiations with the
 dwarish merchant Bjarn Fingolson. But not all is well at Waste's Edge, and
 soon you are confronted with circumstances that are about to destroy your
-mistress' high reputation. And you are the only one to avert this ...
+mistress' high reputation. And you are the only one to avert this...
 
 %prep
 %setup -q -n %{rname}-%{version}
@@ -39,11 +36,10 @@ mistress' high reputation. And you are the only one to avert this ...
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 %{makeinstall_std} datadir=%{_datadir}
-#ROOT%{_gamesbindir} gamedatadir=$RPM_BUILD_ROOT%{_gamesdatadir}/%{mname}/games/%{rname}
 
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications/
+mkdir -p %{buildroot}%{_datadir}/applications/
 cat << EOF > %buildroot%{_datadir}/applications/mandriva-%{name}.desktop
 [Desktop Entry]
 Type=Application
@@ -51,33 +47,32 @@ Exec=%{_gamesbindir}/%{name}
 Icon=%{name}
 Categories=Game;AdventureGame;
 Name=Adonthell - Waste's Edge
-Comment=%{Summary}
+Comment=Open source role-playing game
 EOF
 
-install -m644 %{SOURCE11} -D ${RPM_BUILD_ROOT}%{_miconsdir}/%{name}.png
-install -m644 %{SOURCE12} -D ${RPM_BUILD_ROOT}%{_iconsdir}/%{name}.png
-install -m644 %{SOURCE13} -D ${RPM_BUILD_ROOT}%{_liconsdir}/%{name}.png
+install -m644 %{SOURCE11} -D %{buildroot}%{_iconsdir}/hicolor/16x16/apps/%{name}.png
+install -m644 %{SOURCE12} -D %{buildroot}%{_iconsdir}/hicolor/32x32/apps/%{name}.png
+install -m644 %{SOURCE13} -D %{buildroot}%{_iconsdir}/hicolor/48x48/apps/%{name}.png
 
 %find_lang %{rname}
 
 %post
 %{update_menus}
+%{update_icon_cache hicolor}
 
 %postun
 %{clean_menus}
+%{clean_icon_cache hicolor}
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %files -f %{rname}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS NEWS PLAYING README
 %{_gamesbindir}/%{name}
-%dir %{_gamesdatadir}/%{mname}/games/%{rname}
-%{_gamesdatadir}/%{mname}/games/%{rname}/*
+%{_gamesdatadir}/%{mname}/games/%{rname}
 %{_datadir}/pixmaps/*
 %{_datadir}/applications/mandriva-%{name}.desktop
-%{_iconsdir}/%{name}.png
-%{_liconsdir}/%{name}*.png
-%{_miconsdir}/%{name}*.png
+%{_iconsdir}/hicolor/*/apps/%{name}.png
 
