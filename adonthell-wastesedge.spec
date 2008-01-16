@@ -16,6 +16,7 @@ URL:		http://adonthell.linuxgames.com/
 BuildArch:	noarch
 Requires:	%{mname} >= %{version}
 BuildRequires:	%{mname} >= %{version}
+BuildRequires:	python
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
