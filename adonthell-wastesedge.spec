@@ -3,9 +3,9 @@
 %define	name	%{mname}-%{rname}
 
 Name:		%{name}
-Summary:	Open source role-playing game (RPG)
+Summary:	Role-playing game (RPG)
 Version:	0.3.4
-Release:	%mkrel 2
+Release:	%mkrel 3
 License:	GPL+
 Group:		Games/Adventure
 Source0:	http://freesoftware.fsf.org/download/adonthell/%{rname}-src-%{version}.tar.bz2
