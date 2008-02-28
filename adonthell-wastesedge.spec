@@ -5,7 +5,7 @@
 Name:		%{name}
 Summary:	Role-playing game (RPG)
 Version:	0.3.4
-Release:	%mkrel 3
+Release:	%mkrel 4
 License:	GPL+
 Group:		Games/Adventure
 Source0:	http://freesoftware.fsf.org/download/adonthell/%{rname}-src-%{version}.tar.bz2
@@ -71,7 +71,7 @@ rm -rf %{buildroot}
 %files -f %{rname}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS NEWS PLAYING README
-%{_gamesbindir}/%{name}
+%attr(755, -, -) %{_gamesbindir}/%{name}
 %{_gamesdatadir}/%{mname}/games/%{rname}
 %{_datadir}/pixmaps/*
 %{_datadir}/applications/mandriva-%{name}.desktop
