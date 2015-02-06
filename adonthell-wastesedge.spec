@@ -5,7 +5,7 @@
 Name:		%{name}
 Summary:	Role-playing game (RPG)
 Version:	0.3.4
-Release:	%mkrel 7
+Release:	8
 License:	GPL v2+
 Group:		Games/Adventure
 Source0:	http://freesoftware.fsf.org/download/adonthell/%{rname}-src-%{version}.tar.bz2
