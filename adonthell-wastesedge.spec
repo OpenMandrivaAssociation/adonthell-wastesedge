@@ -12,7 +12,7 @@ Source0:	http://freesoftware.fsf.org/download/adonthell/%{rname}-src-%{version}.
 Source11:	%{name}-16x16.png
 Source12:	%{name}-32x32.png
 Source13:	%{name}-48x48.png
-URL:		http://adonthell.linuxgames.com/
+URL:		https://adonthell.linuxgames.com/
 BuildArch:	noarch
 Requires:	%{mname} >= %{version}
 BuildRequires:	%{mname} >= %{version}
