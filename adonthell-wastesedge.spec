@@ -15,6 +15,11 @@ Source13:	%{name}-48x48.png
 URL:		https://adonthell.linuxgames.com/
 BuildArch:	noarch
 Requires:	%{mname} >= %{version}
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	%{mname} >= %{version}
 BuildRequires:	python
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
